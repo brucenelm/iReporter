@@ -215,3 +215,34 @@ ul li:hover ul li{
 h2{
 	text-indent: 30%
 }
+
+.container{
+	position: relative;
+
+}
+
+.comments{
+	position: relative;
+}
+
+.pics{
+	position: absolute;
+	left: 700
+
+
+}
+
+.vids{
+	position: absolute;
+	left: 310px
+
+}
+
+.foot{
+
+	position: absolute;
+	bottom: -250px
+
+
+}
+
