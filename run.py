@@ -92,6 +92,27 @@ def addred_flag(version):
 	return jsonify({'data':display_list}), 201
 
 
+#edits the location of a particuler flag
+@app.route('/api/<version>/red-flags/<int:red_flag_id>/location',methods = ['PATCH'])
+def edit_red_flag_location(version,red_flag_id):
+
+	try:
+		#assigns a new locations value to a particuler 
+		list_of_incidents[red_flag_id-1]['Location'] = request.json['Location']
+
+		#contains the status and the message
+		display_list=[{'incidentid':red_flag_id,'message':"Updated the red-flag record's location"}
+		]
+	#this exception is thrown if the item refered to does not exist
+	except IndexError:
+		return jsonify({'status':404},{'error':'Incident not found'}), 404
+	return jsonify({'data':display_list}), 201
+
+
+
+
+
+
 
 
 
