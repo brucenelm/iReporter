@@ -109,6 +109,25 @@ def edit_red_flag_location(version,red_flag_id):
 	return jsonify({'data':display_list}), 201
 
 
+#edits the comment
+@app.route('/api/<version>/red-flags/<int:red_flag_id>/comment',methods = ['PATCH'])
+def edit_red_flag_comment(version,red_flag_id):
+	
+	try:
+		#assigns a new value to the comments of the selelcted incident
+		list_of_incidents[red_flag_id-1]['comment'] = request.json['comment']
+
+		display_list=[ {'incidentid':red_flag_id,'message':"Updated the red-flag record's comment"}
+		]
+
+	#this exception is thrown if the item refered to does not exist
+	except IndexError:
+		return jsonify({'status':404},{'error':'Incident not found'}), 404
+	return jsonify({'data':display_list}), 201
+
+
+
+
 
 
 
