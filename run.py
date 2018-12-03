@@ -49,7 +49,7 @@ display_list =[]
 @app.route('/api/<version>/red-flags', methods = ['GET'])
 def get_red_flags(version):
 	 
-	return jsonify({'status':200,'data':list_of_incidents}),200
+	return jsonify({'status':200,'data':list_of_incidents})
 
 #returns a specific red-flag
 @app.route('/api/<version>/red-flags/<int:red_flag_id>', methods = ['GET'])
@@ -58,7 +58,7 @@ def get_one_red_flag(version,red_flag_id):
 		incident = list_of_incidents[red_flag_id-1]  
 	except IndexError:
 		return jsonify({'status':404},{'error':'Incident not found'}), 404
-	return jsonify({'data':incident,'status':200}),200
+	return jsonify({'data':incident,'status':200})
 
 
 #creates a new incident
@@ -89,7 +89,7 @@ def addred_flag(version):
 	#the list contais the status code and "Created red-flag record" message
 	display_list=[{'incidentid':incidentid+1,'message':'Created red-flag record'}]
 
-	return jsonify({'data':display_list,'status':201}), 201
+	return jsonify({'data':display_list}), 201
 
 
 #edits the location of a particuler flag
@@ -106,7 +106,7 @@ def edit_red_flag_location(version,red_flag_id):
 	#this exception is thrown if the item refered to does not exist
 	except IndexError:
 		return jsonify({'status':404},{'error':'Incident not found'}), 404
-	return jsonify({'data':display_list,'status':201}), 201
+	return jsonify({'data':display_list}), 201
 
 
 #edits the comment
@@ -123,7 +123,7 @@ def edit_red_flag_comment(version,red_flag_id):
 	#this exception is thrown if the item refered to does not exist
 	except IndexError:
 		return jsonify({'status':404},{'error':'Incident not found'}), 404
-	return jsonify({'data':display_list,'status':201}), 201
+	return jsonify({'data':display_list}), 201
 
 
 #deletes the incident
@@ -140,7 +140,7 @@ def delete_red_flag(version, red_flag_id):
 	#this exception is thrown if the incident refered to does not exist
 	except IndexError:
 		return jsonify({'status':404},{'error':'Incident not found'}), 404
-	return jsonify({'data':display_list,'status':201}), 201
+	return jsonify({'data':display_list}), 201
 
 
 
