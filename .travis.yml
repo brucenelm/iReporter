@@ -1,0 +1,12 @@
+languege: python
+
+python:
+  - "3.5.2"
+
+#Install dependecies
+install:
+  - pip install -r requirements.txt
+
+#Run unittests
+script:
+  -python test.py 
