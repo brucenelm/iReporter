@@ -89,7 +89,7 @@ def addred_flag(version):
 	#the list contais the status code and "Created red-flag record" message
 	display_list=[{'incidentid':incidentid+1,'message':'Created red-flag record'}]
 
-	return jsonify({'data':display_list}), 201
+	return jsonify({'data':display_list,'status':201}), 201
 
 
 #edits the location of a particuler flag
@@ -106,7 +106,7 @@ def edit_red_flag_location(version,red_flag_id):
 	#this exception is thrown if the item refered to does not exist
 	except IndexError:
 		return jsonify({'status':404},{'error':'Incident not found'}), 404
-	return jsonify({'data':display_list}), 201
+	return jsonify({'data':display_list,'status':201}), 201
 
 
 #edits the comment
@@ -123,7 +123,7 @@ def edit_red_flag_comment(version,red_flag_id):
 	#this exception is thrown if the item refered to does not exist
 	except IndexError:
 		return jsonify({'status':404},{'error':'Incident not found'}), 404
-	return jsonify({'data':display_list}), 201
+	return jsonify({'data':display_list,'status':201}), 201
 
 
 #deletes the incident
@@ -140,18 +140,7 @@ def delete_red_flag(version, red_flag_id):
 	#this exception is thrown if the incident refered to does not exist
 	except IndexError:
 		return jsonify({'status':404},{'error':'Incident not found'}), 404
-	return jsonify({'data':display_list}), 201
-
-
-
-
-
-
-
-
-
-
-
+	return jsonify({'data':display_list,'status':201}), 201
 
 if __name__ == "__main__":
 	app.run(debug=True)
